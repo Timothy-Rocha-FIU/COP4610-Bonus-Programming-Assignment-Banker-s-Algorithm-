@@ -132,7 +132,15 @@ int main(int argc, char *argv[])
 // Function to calculate need matrix ((IMPLEMENT THIS FUNCTION))
 void calculate_need()
 {
-    /*** your code... ***/
+    //Threads
+    for (int i = 0; i < n; i++)
+    {
+        //Resources
+        for (int j = 0; j < m; j++)
+        {
+            need[i][j] = max[i][j] - allocation[i][j];
+        }
+    }
 }
 
 /* =======================================================================================================================================*/
@@ -530,7 +538,15 @@ int read_input_file(const char *filename)
 // Function to calculate available resources ((IMPLEMENT THIS FUNCTION))
 void calculate_available()
 {
-    /*** your code... ***/
+    for (int j = 0; j<m; j++)
+    {
+        available[j] = total_resources[j];
+
+        for (int i = 0; i < n; i++)
+        {
+            available[j] -= allocation[i][j];
+        }
+    }
 }
 
 /* =======================================================================================================================================*/
@@ -543,6 +559,9 @@ bool is_safe_state(int safe_sequence[])
     // HINT: Try to find a safe sequence
     // HINT: If a thread can finish, add its resources to work
     // HINT: If no thread can be found to finish, the system is in an unsafe state
+
+    
+
 }
 
 /* ========================================================================================================================*/
